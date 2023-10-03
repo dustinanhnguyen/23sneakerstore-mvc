@@ -1,6 +1,11 @@
 <?php
-    class HomeController {
+    class HomeController extends Controller {
         public function index() {
-            echo ("Home - Index");
+            $homeController = $this->model("ProductModel");
+            $products = $homeController->getNewProduct();
+            $this->view("master-layout", [
+                'background-page' => 'background-image',
+                'products'=>$products,
+            ]);
         }
     }
